@@ -32,7 +32,7 @@ function initMap() {
             }
         },
         {
-            title: 'EsselWorld',
+            title: 'Essel World',
             location: {
                 lat: 19.232724,
                 lng: 72.805508
@@ -167,23 +167,14 @@ function initMap() {
         vm.places()[i].marker = marker;
         // Push the marker to our array of markers.
         markers.push(marker);
+        
         // Create an onclick event to open an infowindow at each marker.
         marker.addListener('click', function() {
             //populateInfoWindow with getStreetview
             populateInfoWindow(this, largeInfoWindow);
         });
-        // Two event listeners - one for mouseover, one for mouseout,
-        // to change the colors back and forth.
-        marker.addListener('click', function() {
-        	var self = this;
-            self.setIcon(highlightedIcon);
-            self.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function() {
-                self.setAnimation(google.maps.Animation.DROP);
-                self.setIcon(defaultIcon);
-            }, 4900);
-        });
     }
+
 
     // This function populates the infowindow when the marker is clicked. We'll only allow
     // one infowindow which will open at the marker that is clicked, and populate based
@@ -197,6 +188,14 @@ function initMap() {
             // Clear the infowindow content to give the streetview time to load.
             infowindow.setContent('');
             infowindow.marker = marker;
+            //highlight  the selected marker and also set animation.
+            marker.setIcon(highlightedIcon);
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function() {
+                marker.setAnimation(google.maps.Animation.DROP);
+                marker.setIcon(defaultIcon);
+            }, 4900);
+
             // Make sure the marker property is cleared if the infowindow is closed.
             infowindow.addListener('closeclick', function() {
                 //infowindow.setMarker = null;
@@ -279,8 +278,8 @@ function initMap() {
         //Debugging code used to ensure the callFoursquare function is returning
         //the correct data unique to the location selected in map
         console.group('Debug location details');
-		console.log(data + ' vs ' + title);
-		console.groupEnd();
+        console.log(data + ' vs ' + title);
+        console.groupEnd();
     }
 
     // Function for returning the check-ins of a place on foursquare
@@ -323,7 +322,7 @@ ViewModel = function() {
             pnumber: '+91-22-22843989',
         },
         {
-            title: 'EsselWorld',
+            title: 'Essel World',
             address: 'Global Pagoda Road, Gorai Island, Mumbai, Maharashtra 400091, India',
             pnumber: '+91-22-65280305',
         },

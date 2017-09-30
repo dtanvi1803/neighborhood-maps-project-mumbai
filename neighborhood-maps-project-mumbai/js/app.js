@@ -169,12 +169,19 @@ function initMap() {
         markers.push(marker);
         
         // Create an onclick event to open an infowindow at each marker.
-        marker.addListener('click', function() {
-            //populateInfoWindow with getStreetview
-            populateInfoWindow(this, largeInfoWindow);
-        });
+        // marker.addListener('click', function() {
+        //     //populateInfoWindow with getStreetview
+        //     populateInfoWindow(this, largeInfoWindow);
+        // });
+        marker.addListener('click', callPopulateInfoWindow(i,this , largeInfoWindow));
+        
     }
+    function callPopulateInfoWindow(j, marker,largeInfoWindow){
+        return function(event){
+        populateInfoWindow(markers[j], largeInfoWindow);
+        };
 
+    }
 
     // This function populates the infowindow when the marker is clicked. We'll only allow
     // one infowindow which will open at the marker that is clicked, and populate based

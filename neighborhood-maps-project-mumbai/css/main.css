@@ -30,8 +30,8 @@ hr {
 }
 
 .places-list {
-  padding-left: 5px;
-  list-style: none;
+  padding-left: 1px;
+  list-style-type: none;
   margin: 0 auto;
 }
 
@@ -44,13 +44,21 @@ hr {
   font-size: 0.7em;
   font-weight: normal;
   padding-top: 3px;
+  display: none;
   list-style-type: none;
+}
+@media all and (min-width:768px){
+  .place-address,
+  .place-pnumber {
+    display: block;
+    list-style-type: none;
+  }
 }
 
 .map-canvas {
   bottom:0px;
   height: 100%;
-  left: 362px;
+  left: 30%;
   position: absolute;
   right: 0px;
 }
@@ -62,7 +70,7 @@ hr {
   line-height: 25px;
   padding: 10px 10px 10px 10px;
   text-align: left;
-  width: 340px;
+  max-width: 28%;
   cursor: grab;
 }
 li{
